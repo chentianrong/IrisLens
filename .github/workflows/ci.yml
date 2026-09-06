@@ -44,8 +44,10 @@ jobs:
         include:
           - os: windows-2022
             script: package:windows
+            executable: release/windows-unpacked/IrisLens.exe
           - os: ubuntu-24.04
             script: package:linux
+            executable: release/linux-unpacked/irislens
     runs-on: ${{ matrix.os }}
     needs: verify
     steps:
@@ -83,6 +85,8 @@ jobs:
           if-no-files-found: error
       - name: Run packaged smoke test
         shell: bash
+        env:
+          IRISLENS_EXECUTABLE: ${{ matrix.executable }}
         run: |
           set -o pipefail
           if command -v apt-get >/dev/null 2>&1; then
