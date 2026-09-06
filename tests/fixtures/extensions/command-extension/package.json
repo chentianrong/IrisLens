@@ -1,0 +1,12 @@
+{
+  "name": "command-fixture",
+  "publisher": "irislens",
+  "version": "1.0.0",
+  "engines": { "vscode": "^1.0.0" },
+  "main": "main.cjs",
+  "activationEvents": ["onCommand:fixture.ping"],
+  "contributes": {
+    "commands": [{ "command": "fixture.ping", "title": "Fixture Ping" }],
+    "configuration": { "properties": { "fixture.greeting": { "default": "hello" } } }
+  }
+}

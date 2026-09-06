@@ -1,0 +1,50 @@
+appId: dev.irislens.desktop
+productName: IrisLens
+copyright: Copyright © IrisLens contributors
+directories:
+  output: release
+files:
+  - dist/**/*
+  - package.json
+  - node_modules/better-sqlite3/**/*
+  - node_modules/bindings/**/*
+  - node_modules/file-uri-to-path/**/*
+  - node_modules/jszip/**/*
+  - node_modules/lie/**/*
+  - node_modules/pako/**/*
+  - node_modules/readable-stream/**/*
+  - node_modules/setimmediate/**/*
+extraResources:
+  - from: gateway
+    to: gateway
+npmRebuild: true
+compression: normal
+deb:
+  compression: gz
+asarUnpack:
+  - node_modules/better-sqlite3/**
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+  artifactName: IrisLens-Setup.exe
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  deleteAppDataOnUninstall: false
+  artifactName: IrisLens-Setup.exe
+linux:
+  target:
+    - target: deb
+      arch: [x64]
+  category: Development
+  maintainer: IrisLens contributors <support@irislens.invalid>
+  artifactName: iris-lens_${version}_amd64.deb
+  desktop:
+    entry:
+      Name: IrisLens
+      Comment: AI-native standalone IDE
+      Terminal: false
+      StartupWMClass: IrisLens
+  syncDesktopName: true

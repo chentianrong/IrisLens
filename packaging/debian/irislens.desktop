@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=IrisLens
+Comment=AI-native standalone IDE
+Exec=irislens
+Icon=irislens
+Terminal=false
+Categories=Development;IDE;
+StartupWMClass=IrisLens

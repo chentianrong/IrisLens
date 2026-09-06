@@ -1,0 +1,12 @@
+{
+  "name": "language-fixture",
+  "publisher": "irislens",
+  "version": "1.0.0",
+  "engines": { "vscode": "^1.0.0" },
+  "main": "main.js",
+  "activationEvents": ["onLanguage:irislens"],
+  "contributes": {
+    "languages": [{ "id": "irislens", "extensions": [".iris"] }],
+    "configuration": { "properties": { "irislens.languageServer": { "default": "fixture-lsp" } } }
+  }
+}

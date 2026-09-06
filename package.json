@@ -1,0 +1,43 @@
+{
+  "name": "irislens",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Standalone AI IDE with Monaco, an IrisLens workbench, and an embedded LiteLLM Agent workbench",
+  "desktopName": "irislens",
+  "author": "IrisLens contributors <support@irislens.invalid>",
+  "main": "dist/main/app.js",
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "smoke": "node scripts/smoke.mjs",
+    "layout:verify": "node scripts/verify-layout.mjs",
+    "build": "tsc -p tsconfig.build.json && vite build",
+    "package:windows": "electron-builder --win nsis --x64",
+    "package:linux": "electron-builder --linux deb --x64"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.4.1",
+    "jszip": "^3.10.1",
+    "monaco-editor": "^0.54.0"
+  },
+  "devDependencies": {
+    "@fluentui/react-components": "^9.70.0",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.3.2",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.4",
+    "electron": "^38.2.0",
+    "electron-builder": "^26.0.12",
+    "jsdom": "^29.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.0",
+    "vitest": "^4.0.15"
+  }
+}

@@ -1,0 +1,4 @@
+#!/bin/sh
+set -e
+update-desktop-database /usr/share/applications || true
+chmod 755 /usr/share/applications/irislens.desktop || true
