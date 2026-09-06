@@ -44,7 +44,7 @@ jobs:
         include:
           - os: windows-2022
             script: package:windows
-            executable: release/windows-unpacked/IrisLens.exe
+            executable: release/win-unpacked/IrisLens.exe
           - os: ubuntu-24.04
             script: package:linux
             executable: release/linux-unpacked/irislens
