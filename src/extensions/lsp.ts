@@ -95,8 +95,10 @@ export class LspClient {
   private send(message: unknown): void {
     if (!this.child) throw new Error('LSP server is not running');
     const content = Buffer.from(JSON.stringify(message), 'utf8');
-    this.child.stdin.write(`Content-Length: ${content.byteLength}\r\n\r\n`);
-    this.child.stdin.write(content);
+    this.child.stdin.write(Buffer.concat([
+      Buffer.from(`Content-Length: ${content.byteLength}\r\n\r\n`),
+      content
+    ]));
   }
 
   async shutdown(): Promise<void> {
