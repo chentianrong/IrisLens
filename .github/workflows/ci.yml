@@ -76,7 +76,7 @@ jobs:
             echo "::error::${line//%/%%}"
           done
       - uses: actions/upload-artifact@v5
-        if: always()
+        if: failure()
         with:
           name: package-log-${{ matrix.os }}
           path: package.log

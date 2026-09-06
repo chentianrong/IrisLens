@@ -14,8 +14,8 @@
     "smoke": "node scripts/smoke.mjs",
     "layout:verify": "node scripts/verify-layout.mjs",
     "build": "tsc -p tsconfig.build.json && vite build",
-    "package:windows": "electron-builder --win nsis --x64",
-    "package:linux": "electron-builder --linux deb --x64"
+    "package:windows": "electron-builder --win nsis --x64 --publish=never",
+    "package:linux": "electron-builder --linux deb --x64 --publish=never"
   },
   "dependencies": {
     "better-sqlite3": "^12.4.1",
