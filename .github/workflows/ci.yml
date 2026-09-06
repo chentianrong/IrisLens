@@ -31,6 +31,7 @@ jobs:
         with:
           python-version: '3.12'
           cache: pip
+          cache-dependency-path: gateway/requirements.lock
       - run: python -m venv .venv-gateway
       - run: .venv-gateway/bin/pip install -r gateway/requirements.lock
       - run: npm ci
