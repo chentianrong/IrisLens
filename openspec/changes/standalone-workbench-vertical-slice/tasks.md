@@ -50,4 +50,4 @@
 - [x] 9.1 Add representative extension fixtures for commands, configuration, editor contributions, diagnostics, formatter, and LSP behavior; verify compatibility matrix tests.
 - [x] 9.2 Add workbench accessibility, performance, startup, visual layout, and keyboard regression tests; verify agreed desktop thresholds pass.
 - [x] 9.3 Update Electron packaging metadata, smoke checks, installer documentation, and release checks for the standalone architecture; verify package artifacts do not include or require `fork/vscode`.
-- [ ] 9.4 Run the full verification pipeline across type checks, unit tests, integration tests, accessibility and performance checks, and packaged smoke tests; verify all required checks pass on Windows and Ubuntu packaging paths.
+- [x] 9.4 Run the full verification pipeline across type checks, unit tests, integration tests, accessibility and performance checks, and packaged smoke tests; verify all required checks pass on Windows and Ubuntu packaging paths.
