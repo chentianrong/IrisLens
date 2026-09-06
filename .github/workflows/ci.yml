@@ -57,7 +57,27 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
-      - run: npm run ${{ matrix.script }}
+      - name: Package desktop app
+        shell: bash
+        run: |
+          set -o pipefail
+          DEBUG=electron-builder npm run ${{ matrix.script }} 2>&1 | tee package.log
+      - name: Summarize package failure
+        if: failure()
+        shell: bash
+        run: |
+          {
+            echo "## Package failure"
+            echo '```text'
+            tail -n 200 package.log
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v5
+        if: always()
+        with:
+          name: package-log-${{ matrix.os }}
+          path: package.log
+          if-no-files-found: error
       - name: Run packaged smoke test
         shell: bash
         run: |
