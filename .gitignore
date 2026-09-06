@@ -1,0 +1,11 @@
+node_modules/
+dist/
+release/
+coverage/
+*.tsbuildinfo
+fork/vscode/
+.env
+*.local.json
+*.sqlite
+*.sqlite-*
+.superpowers/
