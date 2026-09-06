@@ -84,13 +84,35 @@ jobs:
       - name: Run packaged smoke test
         shell: bash
         run: |
+          set -o pipefail
           if command -v apt-get >/dev/null 2>&1; then
             sudo apt-get update
             sudo apt-get install -y xvfb
-            IRISLENS_DISABLE_SANDBOX=1 xvfb-run -a npm run smoke
+            IRISLENS_DISABLE_SANDBOX=1 xvfb-run -a npm run smoke 2>&1 | tee smoke.log
           else
-            npm run smoke
+            npm run smoke 2>&1 | tee smoke.log
           fi
+      - name: Summarize smoke failure
+        if: failure()
+        shell: bash
+        run: |
+          if [ -f smoke.log ]; then
+            {
+              echo "## Smoke failure"
+              echo '```text'
+              tail -n 200 smoke.log
+              echo '```'
+            } >> "$GITHUB_STEP_SUMMARY"
+            grep -Ei 'error|fail|exception|exit|cannot|missing' smoke.log | tail -n 20 | while IFS= read -r line; do
+              echo "::error::${line//%/%%}"
+            done
+          fi
+      - uses: actions/upload-artifact@v5
+        if: failure()
+        with:
+          name: smoke-log-${{ matrix.os }}
+          path: smoke.log
+          if-no-files-found: error
       - uses: actions/upload-artifact@v5
         with:
           name: irislens-${{ matrix.os }}
