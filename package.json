@@ -13,7 +13,7 @@
     "test:watch": "vitest",
     "smoke": "node scripts/smoke.mjs",
     "layout:verify": "node scripts/verify-layout.mjs",
-    "build": "tsc -p tsconfig.build.json && vite build",
+    "build": "tsc -p tsconfig.build.json && node -e \"require('fs').copyFileSync('src/main/preload.cjs','dist/main/preload.cjs')\" && vite build",
     "package:windows": "electron-builder --win nsis --x64 --publish=never",
     "package:linux": "electron-builder --linux deb --x64 --publish=never"
   },
